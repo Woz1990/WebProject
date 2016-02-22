@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Register</title>
+	<script src="jquery-1.11.3.min.js"></script>
+	<script>
+$(document).ready(function(){
+    $("#signup_button").click(function(){
+    	var userData = new Object();
+    	userData.userName = $("input[name=user_name]").val();
+    	userData.password = $("input[name=password]").val();
+    	userData.nickName = $("input[name=nickname]").val();
+    	userData.shortDescription = $("input[name=short_description]").val();
+    	userData.photo = $("input[name=photo]").val();
+    	$.ajax({
+            url: "./brs/signup",
+            type: 'POST',
+            async: false,
+            dataType: 'json',
+            data: JSON.stringify(userData),
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            success: function (data) {
+    			alert("success " + "\n" + "password " + data.password + "\n" + "rating " + data.rating);
+        	},
+        	 fail: function(data){
+        		alert("fail");
+        	}
+    	});
+    });
+});
+
+
+</script>
+</head>
+<body>
+	<div ng-app="registerApp" ng-controller="microBloggerController">
+	<h2> Username
+		<br><input type="text" name="user_name" size="10"/> </h2>
+	<h2> Password
+		<br><input type="password" name="password" size="10"/> </h2>
+	<h2> Nickname
+		<br><input type="text" name="nickname" size="10"/> </h2>
+	<h2> Short Description
+		<br><input type="text" name="short_description" /> </h2>
+	<h2> Photo
+		<br><input type="text" name="photo"/> </h2>
+	<h2><button type="button" id="signup_button" style="width:65px;background-color: DeepSkyBlue"> Sign Up
+			</button></h2>
+				
+</body>
+
+</html>

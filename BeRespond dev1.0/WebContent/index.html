@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>beRespond</title>
+	<link rel="stylesheet" type="text/css" href="login_page_berespond.css">
+
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(document).ready(function(){
+	var msgData = new Object();
+	msgData.login_name = "Donald Duck";
+	msgData.user_password = "Duckburg"; 
+    $("#submit_button").click(function(){
+    	$.ajax({
+            url: "./brs/dologin",
+            type: 'POST',
+            async: false,
+            dataType: 'json',
+            data: JSON.stringify(msgData),
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            success: function (data) {
+    			alert("success " + "hhh" + data.login_name +"\n" + "password " + data.user_password);
+        	},
+        	 fail: function(data){
+        		alert("fail");
+        	}
+    	});
+    });
+    $("#register_button").click(function(){
+    	window.location.href = "RegisterPage.html";
+    });
+});
+
+
+</script>
+</head>
+<body>
+
+		<div> 
+			<h2> Username
+				<input type="text" name="login_name" size="10"/> </h2>
+			<h2> Password
+				<input class="input_edit_text" type="password" name="user_password" size="10"/> </h2> 
+			<h2><button type="button" id="register_button" style="width:65px;background-color: DeepSkyBlue">Sign Up
+				</h2>
+			<h2> <button type="button" id="submit_button" style="width:65px;background-color: DeepSkyBlue" >Sign In</button></h2>
+		</div>
+
+</body>
+</html>

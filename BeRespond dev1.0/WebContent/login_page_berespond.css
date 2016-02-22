@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+body {
+	background-image: url("testProject/images/background.jpeg"); 
+	}
+
+div {
+    margin-top: 250px;
+    margin-left: 890px;
+}
+
+H2.submit_button {
+	position:relative;
+	margin-left: 227px;
+	margin-bottom:160px;
+	
+}
+
+input.input_edit_text {
+	position:relative;
+	margin-left: 8px;
+}
